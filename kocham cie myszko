@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nasza Miłość ❤️</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ font-family:'Segoe UI',Arial,sans-serif;
+ background:linear-gradient(135deg,#180515,#4b153c,#190a24);
+ color:white;
+ text-align:center;
+ min-height:100vh;
+ overflow-x:hidden;
+}
+header{
+ padding:95px 20px 70px;
+ background:radial-gradient(circle,#902e69 0%,transparent 70%);
+}
+h1{
+ font-size:clamp(38px,8vw,70px);
+ color:#ff94c9;
+ text-shadow:0 0 30px #ff4ba0;
+ margin:15px 0;
+}
+h2{color:#ff9dcd;font-size:30px}
+p{line-height:1.8}
+.subtitle{font-size:20px;color:#ffe0ef}
+.heart{
+ font-size:65px;
+ animation:beat 1.2s infinite;
+}
+@keyframes beat{
+ 0%,100%{transform:scale(1)}
+ 50%{transform:scale(1.2)}
+}
+button,.btn{
+ background:linear-gradient(45deg,#ff428e,#ff85b7);
+ border:0;
+ border-radius:30px;
+ padding:15px 28px;
+ color:white;
+ font-weight:bold;
+ font-size:17px;
+ cursor:pointer;
+ box-shadow:0 6px 25px #ff428e66;
+ transition:.3s;
+ display:inline-block;
+ text-decoration:none;
+}
+button:hover,.btn:hover{transform:scale(1.06)}
+section{padding:55px 20px}
+.gallery{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:20px;
+ max-width:850px;
+ margin:35px auto;
+}
+.photo{
+ background:#ffffff12;
+ padding:9px;
+ border-radius:20px;
+ box-shadow:0 8px 30px #0006;
+}
+.photo img{
+ display:block;
+ width:100%;
+ height:350px;
+ object-fit:cover;
+ border-radius:14px;
+}
+.photo p{color:#ffc6e0}
+.letter{
+ max-width:680px;
+ margin:25px auto;
+ padding:30px;
+ border:1px solid #ff8ec766;
+ border-radius:25px;
+ background:#ffffff12;
+ box-shadow:0 0 35px #ff4ba022;
+}
+#list{display:none}
+#list.show{display:block;animation:appear .7s}
+@keyframes appear{
+ from{opacity:0;transform:translateY(15px)}
+ to{opacity:1;transform:translateY(0)}
+}
+.floating{
+ position:fixed;
+ bottom:-50px;
+ pointer-events:none;
+ animation:floatUp linear forwards;
+ z-index:10;
+}
+@keyframes floatUp{
+ to{transform:translateY(-115vh) rotate(30deg);opacity:0}
+}
+footer{padding:35px;color:#ffbddb}
+@media(max-width:600px){
+ .gallery{grid-template-columns:1fr}
+ .photo img{height:390px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="heart">❤️</div>
+ <h1>Nasza Miłość</h1>
+ <p class="subtitle">Ty i ja. Nasza własna historia. 💕</p>
+ <a href="#galeria" class="btn">Zobacz nasze wspomnienia 💗</a>
+</header>
+
+<section id="galeria">
+ <h2>📸 Nasze wspomnienia</h2>
+ <p>Każde zdjęcie przypomina mi o Tobie ❤️</p>
+
+ <div class="gallery">
+  <div class="photo">
+   <img src="./zdjecie1.png" alt="Nasze wspomnienie 1">
+   <p>Moja ulubiona osoba 💕</p>
+  </div>
+  <div class="photo">
+   <img src="./zdjecie2.png" alt="Nasze wspomnienie 2">
+   <p>Jesteś wyjątkowa ❤️</p>
+  </div>
+  <div class="photo">
+   <img src="./zdjecie3.png" alt="Nasze wspomnienie 3">
+   <p>Zawsze przy Tobie 💗</p>
+  </div>
+  <div class="photo">
+   <img src="./zdjecie4.png" alt="Nasze wspólne zdjęcie">
+   <p>Razem najlepiej 🥹❤️</p>
+  </div>
+ </div>
+</section>
+
+<section>
+ <h2>💌 Mam dla Ciebie list</h2>
+ <button onclick="otworzList()">Otwórz list ❤️</button>
+
+ <div id="list" class="letter">
+  <h2>Moja Kochana ❤️</h2>
+  <p>
+   Chciałem zrobić dla Ciebie coś wyjątkowego,
+   dlatego powstała ta strona.
+  </p>
+  <p>
+   Dziękuję Ci za wszystkie wspólne chwile,
+   za uśmiechy, rozmowy i piękne wspomnienia.
+   Każda chwila spędzona razem jest dla mnie ważna.
+  </p>
+  <p>
+   Mam nadzieję, że przed nami jeszcze mnóstwo
+   cudownych wspomnień.
+  </p>
+  <h2>Kocham Cię ❤️</h2>
+ </div>
+</section>
+
+<section>
+ <h2>💕 Jedno małe pytanie</h2>
+ <p>Wiesz, jak bardzo Cię kocham?</p>
+ <button onclick="serduszka()">
+  Kliknij i zobacz ❤️
+ </button>
+ <h2 id="odpowiedz"></h2>
+</section>
+
+<footer>
+ Stworzone z miłości ❤️
+ <p>Nasza historia trwa dalej... ♾️</p>
+</footer>
+
+<script>
+function otworzList(){
+ document.getElementById("list").classList.toggle("show");
+ serduszka();
+}
+function serduszka(){
+ document.getElementById("odpowiedz").textContent=
+ "Bardziej, niż potrafią opisać słowa! ❤️";
+ for(let i=0;i<35;i++){
+  setTimeout(()=>{
+   const heart=document.createElement("span");
+   heart.className="floating";
+   heart.textContent=["❤️","💗","💕","💖"][Math.floor(Math.random()*4)];
+   heart.style.left=Math.random()*100+"vw";
+   heart.style.fontSize=(18+Math.random()*25)+"px";
+   heart.style.animationDuration=(3+Math.random()*3)+"s";
+   document.body.appendChild(heart);
+   setTimeout(()=>heart.remove(),6500);
+  },i*65);
+ }
+}
+</script>
+</body>
+</html>
